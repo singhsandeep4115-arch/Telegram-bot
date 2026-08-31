@@ -1,7 +1,7 @@
 import time
 import requests
 
-BOT_TOKEN = "8925788937:AAF35sRkmuojF5ntbFQA5KayYCwCECNYOKA"
+BOT_TOKEN = "8347163119:AAEs5xfqwUWBrL8qBCWtiEwNZcPyAUANbl0"
 
 CHANNELS = [
     "@SS_Trader_17",
