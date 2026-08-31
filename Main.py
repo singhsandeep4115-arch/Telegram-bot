@@ -1,5 +1,14 @@
+import os
 import time
+import threading
 import requests
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "SS Forwarder Bot is Running 24/7!"
 
 BOT_TOKEN = "8347163119:AAEs5xfqwUWBrL8qBCWtiEwNZcPyAUANbl0"
 
@@ -36,7 +45,7 @@ def copy_message(chat_id, from_chat_id, message_id):
     except Exception:
         pass
 
-def main():
+def bot_loop():
     print("Cloud bot is running 24/7...")
     last_update_id = None
     
@@ -57,4 +66,10 @@ def main():
         time.sleep(1)
 
 if __name__ == "__main__":
-    main()
+    t = threading.Thread(target=bot_loop)
+    t.daemon = True
+    t.start()
+    
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
+    
